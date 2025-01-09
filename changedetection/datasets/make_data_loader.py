@@ -62,6 +62,7 @@ class ChangeDetectionDatset(Dataset):
         post_img = self.loader(post_path)
         label = self.loader(label_path)
         label = label / 255
+        # label = np.zeros(pre_img.shape[:2], dtype=np.float32)
 
         if 'train' in self.data_pro_type:
             pre_img, post_img, label = self.__transforms(True, pre_img, post_img, label)
@@ -70,6 +71,14 @@ class ChangeDetectionDatset(Dataset):
             label = np.asarray(label)
 
         data_idx = self.data_list[index]
+
+        # pre_img=pre_img.astype("float")
+        # post_img=post_img.astype("float")
+        # label = label.astype("float")
+
+        # print(f"pre_img dtype: {pre_img.dtype}, shape: {pre_img.shape}")
+        # print(f"post_img dtype: {post_img.dtype}, shape: {post_img.shape}")
+        # print(f"label dtype: {label.dtype}, shape: {label.shape}")
         return pre_img, post_img, label, data_idx
 
     def __len__(self):

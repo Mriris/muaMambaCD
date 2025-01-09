@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/songjian/project/MambaCD')
+sys.path.append('/home/iris/PycharmProjects')
 
 import argparse
 import os
@@ -109,7 +109,15 @@ class Inference(object):
 
                 binary_change_map = np.squeeze(output_1)
                 binary_change_map[binary_change_map==1] = 255
+
+                # print(f"binary_change_map type: {type(binary_change_map)}")
+                # print(f"binary_change_map dtype: {binary_change_map.dtype}")
+                # print(f"binary_change_map shape: {binary_change_map.shape}")
+                # print(f"binary_change_map data: {binary_change_map}")
+                # binary_change_map = binary_change_map.astype(np.uint8)
+
                 imageio.imwrite(os.path.join(self.change_map_saved_path, image_name), binary_change_map.astype(np.uint8))
+                # print("保存路径："+ os.path.join(self.change_map_saved_path, image_name))
 
         f1_score = self.evaluator.Pixel_F1_score()
         oa = self.evaluator.Pixel_Accuracy()
