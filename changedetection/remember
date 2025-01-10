@@ -11,17 +11,9 @@ python script/train_MambaBCD.py  --dataset 'SYSU' \
                                  --cfg '/home/iris/PycharmProjects/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml' \
                                  --pretrained_weight_path '/home/iris/PycharmProjects/MambaCD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth'
 
-python script/infer_MambaBCD.py  --dataset 'LEVIR-CD+' \
-                                 --model_type 'MambaBCD_Tiny' \
-                                 --test_dataset_path '/home/iris/Datasets/LEVIR-CD/test' \
-                                 --test_data_list_path '/home/iris/PycharmProjects/MambaCD/changedetection/datasets/data_name_list/LEVIR-CD/test_list.txt' \
-                                 --cfg '/home/iris/PycharmProjects/MambaCD/changedetection/configs/vssm1/vssm_tiny_224_0229flex.yaml' \
-                                 --resume '/home/iris/PycharmProjects/MambaCD/pretrained_weight/MambaBCD_Tiny_LEVIRCD+_F1_0.8803.pth'
-
-python script/infer_MambaBCD.py  --dataset 'mua' \
-                                 --model_type 'MambaBCD_Tiny' \
-                                 --test_dataset_path '/home/iris/Datasets/mua/test' \
-                                 --test_data_list_path '/home/iris/PycharmProjects/MambaCD/changedetection/datasets/data_name_list/mua/test_list.txt' \
-                                 --cfg '/home/iris/PycharmProjects/MambaCD/changedetection/configs/vssm1/vssm_tiny_224_0229flex.yaml' \
-                                 --resume '/home/iris/PycharmProjects/MambaCD/pretrained_weight/MambaBCD_Tiny_LEVIRCD+_F1_0.8803.pth'
-
+python script/infer_MambaBCD.py  --dataset 'mua4' \
+                                 --model_type 'BCD_base' \
+                                 --test_dataset_path '/home/iris/Datasets/SYSU-CD/test' \
+                                 --test_data_list_path '/home/iris/PycharmProjects/MambaCD/changedetection/datasets/data_name_list/SYSU/test_list.txt' \
+                                 --cfg '/home/iris/PycharmProjects/MambaCD/changedetection/configs/vssm1/vssm_base_224.yaml' \
+                                 --resume '/home/iris/PycharmProjects/MambaCD/pretrained_weight/MambaBCD_Base_LEVIRCD+_F1_0.8823.pth'

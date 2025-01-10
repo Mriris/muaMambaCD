@@ -100,6 +100,12 @@ class Inference(object):
 
                 output_1 = output_1.data.cpu().numpy()
                 output_1 = np.argmax(output_1, axis=1)
+                # # 手动设置阈值
+                # threshold = 0.1  # 设置阈值为 0.3（默认通常为 0.5）
+                # # 使用阈值生成二值化差异图
+                # output_1 = (output_1[:, 1, :, :] > threshold).astype(np.uint8)  # 保留通道 1（变化）
+
+
                 labels = labels.cpu().numpy()
             
                 self.evaluator.add_batch(labels, output_1)
@@ -125,10 +131,16 @@ class Inference(object):
         pre = self.evaluator.Pixel_Precision_Rate()
         iou = self.evaluator.Intersection_over_Union()
         kc = self.evaluator.Kappa_coefficient()
-        print(f'Racall rate is {rec}, Precision rate is {pre}, OA is {oa}, '
-              f'F1 score is {f1_score}, IoU is {iou}, Kappa coefficient is {kc}')         
-        print('Inference stage is done!')
-            
+        # print(f'Racall rate is {rec}, Precision rate is {pre}, OA is {oa}, '
+        #       f'F1 score is {f1_score}, IoU is {iou}, Kappa coefficient is {kc}')
+        # print('Inference stage is done!')
+        print(f'召回率 (Recall rate)：{rec:.4f}')
+        print(f'精确率 (Precision rate)：{pre:.4f}')
+        print(f'整体精度 (OA, Overall Accuracy)：{oa:.4f}')
+        print(f'F1 分数 (F1 score)：{f1_score:.4f}')
+        print(f'交并比 (IoU, Intersection over Union)：{iou:.4f}')
+        print(f'Kappa 系数 (Kappa coefficient)：{kc:.4f}')
+        print('推理阶段已完成！')
 
 
 def main():
